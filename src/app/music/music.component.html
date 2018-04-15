@@ -1,0 +1,26 @@
+<div style="margin-top: 3%;"></div>
+<div class="row">
+  <div class="col-md-12">
+    <input type="text" class="form-control" [(ngModel)]="artistName" (keyup)="searchForArtist();" placeholder="Search for Artists (Eminem)"
+    />
+  </div>
+</div>
+<div class="row" style="margin-top: 2%" *ngIf="paginatorLength">
+  <div class="center">
+    <pagination [totalItems]="paginatorLength" (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+</div>
+<div class="container" *ngFor="let artist of currentArtistList;">
+
+    <div class="row customCard">
+        <div class="col-xs-4">
+          <div class="pull-left">
+            <img class="img-thumbnail" alt="logo" src="{{artist.strArtistLogo}}" width="100px" onerror="this.style.display='none'"/>
+          </div>
+        </div>
+        <div class="col-xs-4" style="margin-left: 20px;">
+            <p class="pMargin">{{artist.strArtist}}</p>
+            <button class="btn btn-primary btn-sm" style="margin-top: 10px;" (click)="viewAlbum(artist);">View Albums</button>
+        </div>
+      </div>
+</div>
