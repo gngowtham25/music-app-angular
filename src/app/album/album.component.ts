@@ -49,11 +49,10 @@ export class AlbumComponent implements OnInit {
   getTrackList(template: TemplateRef<any> , album : any){
 
     this.selectedAlbum = album;
-    console.log(this.selectedAlbum);
     this.albumService.getAlbumDetails(album.idAlbum).subscribe(data=>{
       this.trackList = data.track;
-      this.openModal(template)
     })
+    this.openModal(template)
   }
 
   openModal(template: TemplateRef<any>) {
